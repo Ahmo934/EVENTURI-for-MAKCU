@@ -39,6 +39,18 @@ High-performance color-based aimbot for use with MAKCU hardware, featuring confi
    3. ```bash
        python gui.py
 
+ **Note:**
+
+ - To customize the colors your aimbot will detect, simply edit the HSV ranges in config.py.
+   Find the section that looks like this:
+   ```python
+      "color_ranges": {
+        "purple": {"lower": [140, 60, 100], "upper": [160, 255, 255]},
+        "yellow": {"lower": [30, 125, 150], "upper": [35, 255, 255]},
+    }
+   
+  and change to your desire color range.
+
 - **Credits**
   Special thanks to everyone in the MAKCU community.
 
