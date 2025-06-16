@@ -51,6 +51,7 @@ High-performance color-based aimbot for use with MAKCU hardware, featuring confi
    
   and change to your desire color range.
 
+
 - **Credits**
   Special thanks to everyone in the MAKCU community.
 
