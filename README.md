@@ -39,10 +39,10 @@ High-performance color-based aimbot for use with MAKCU hardware, featuring confi
    3. ```bash
        python gui.py
 
-- **Credits
+- **Credits**
   Special thanks to everyone in the MAKCU community.
 
-- **How it Works
+- **How it Works**
   - Detection: Uses HSV masking and fake-body filling for extremely robust target acquisition (works even on difficult backgrounds).
 
   - Aiming: Moves the mouse using the MAKCU device, supporting normal, bezier, and silent modes.
