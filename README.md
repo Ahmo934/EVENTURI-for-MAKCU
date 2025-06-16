@@ -68,3 +68,5 @@ High-performance color-based aimbot for use with MAKCU hardware, featuring confi
  - Add hsv color picker.
 
  - Fix Debug window.
+
+ - Start/Stop Aimbot not working properly.
