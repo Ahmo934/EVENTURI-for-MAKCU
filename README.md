@@ -51,3 +51,7 @@ High-performance color-based aimbot for use with MAKCU hardware, featuring confi
 
   - Debug: Real-time OpenCV preview (can be toggled on/off from GUI).
 
+ **TODO:**
+ - Add hsv color picker.
+
+ - Fix Debug window.
