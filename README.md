@@ -1,5 +1,4 @@
 # EVENTURI-for-MAKCU
-High-performance color-based aimbot for use with MAKCU hardware, featuring configurable detection, smooth mouse control and live GUI for 2pc setup.
 
 **EVENTURI for MAKCU** is a modern, highly-configurable colorbot aimbot, designed for low-latency hardware-based mouse control (MAKCU device). It provides advanced color detection, adjustable region-of-interest, ultra-smooth aiming, and a beautiful, easy-to-use GUI.
 
