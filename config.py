@@ -12,8 +12,8 @@ DEFAULT_CONFIG = {
     "aim_offset_y": 0,
     "mode": "bezier",  # "normal", "bezier", "silent"
     "mouse_button": 3,  # 0-4
-    "body_height" : 60,
-    "body_width" : 18,
+    "body_height" : 30,
+    "body_width" : 15,
     "debug": True,
     # Normal Move
     "normal_min_speed": 4,

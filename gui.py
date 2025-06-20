@@ -48,7 +48,7 @@ class EventuriGUI(ctk.CTk):
         self.debug_btn.grid(row=1, column=2, padx=5)
         ctk.CTkButton(config_frame, text="Edit Color Range", command=self.edit_color_range).grid(row=0, column=2, padx=5)
         ctk.CTkLabel(config_frame, text="Aim Offset Y:").grid(row=2, column=0, sticky="w")
-        self.offset_spin = ctk.CTkSlider(config_frame, from_=25, to=-25, number_of_steps=49, command=self.update_offset)
+        self.offset_spin = ctk.CTkSlider(config_frame, from_=35, to=-35, number_of_steps=69, command=self.update_offset)
         self.offset_spin.grid(row=2, column=1, padx=5)
 
         # --- Mode Tabs ---
@@ -143,10 +143,24 @@ class EventuriGUI(ctk.CTk):
         ctk.CTkLabel(self.dynamic_section, text="Aimbot Mouse Button:").pack(anchor="w")
         btnrow = ctk.CTkFrame(self.dynamic_section)
         btnrow.pack(anchor="w", pady=4)
+        if not hasattr(self, 'mouse_btn_var'):
+            self.mouse_btn_var = tk.IntVar(value=config.mouse_button)
+        else:
+            self.mouse_btn_var.set(config.mouse_button)
+
+        def mouse_btn_update():
+            config.mouse_button = self.mouse_btn_var.get()
+
         for i, name in enumerate(["Left", "Right", "Middle", "Side 4", "Side 5"]):
-            b = ctk.CTkRadioButton(btnrow, text=name, variable=tk.IntVar(value=config.mouse_button), value=i, command=partial(self.set_mouse_btn, i))
+            b = ctk.CTkRadioButton(
+                btnrow,
+                text=name,
+                variable=self.mouse_btn_var,
+                value=i,
+                command=mouse_btn_update
+            )
             b.pack(side="left", padx=5)
-        # Mode-specific fields
+                # Mode-specific fields
         if mode == "normal":
             self.add_speed_section("Normal", "normal_min_speed", "normal_max_speed")
         elif mode == "bezier":
@@ -154,8 +168,6 @@ class EventuriGUI(ctk.CTk):
         elif mode == "silent":
             self.add_bezier_section("silent_segments", "silent_ctrl_x", "silent_ctrl_y")
             self.add_silent_section()
-    def set_mouse_btn(self, btn):
-        config.mouse_button = btn
     def add_speed_section(self, label, min_key, max_key):
         f = ctk.CTkFrame(self.dynamic_section)
         f.pack(fill="x", pady=4)

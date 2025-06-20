@@ -74,15 +74,19 @@ def aimbot_loop():
             target_screen_y = get_region()[1] + target[1] + config.aim_offset_y
             dx = target_screen_x - screen_center_x
             dy = target_screen_y - screen_center_y
+            rounded_dx = int(round(dx))
+            rounded_dy = int(round(dy))
 
             if config.mode == "normal":
-                step_dx, step_dy = adaptive_speed(dx, dy, min_speed=config.normal_min_speed, max_speed=config.normal_max_speed)
+                speed = config.normal_max_speed
+                step_dx = int(np.sign(rounded_dx) * min(abs(dx), speed))
+                step_dy = int(np.sign(rounded_dy) * min(abs(dy), speed))
                 mouse.move(step_dx, step_dy)
             elif config.mode == "bezier":
-                mouse.move_bezier(dx, dy, config.bezier_segments, config.bezier_ctrl_x, config.bezier_ctrl_y)
+                mouse.move_bezier(rounded_dx, rounded_dy, config.bezier_segments, config.bezier_ctrl_x, config.bezier_ctrl_y)
             elif config.mode == "silent" and trigger_pressed and (current_time - last_shot_time) > config.silent_cooldown:
-                move_dx = int(dx * config.silent_speed)
-                move_dy = int(dy * config.silent_speed)
+                move_dx = int(rounded_dx * config.silent_speed)
+                move_dy = int(rounded_dy * config.silent_speed)
                 mouse.move_bezier(move_dx, move_dy, config.silent_segments, config.silent_ctrl_x, config.silent_ctrl_y)
                 time.sleep(0.012)
                 mouse.click()
